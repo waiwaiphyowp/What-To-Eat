@@ -5,8 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Button from '@mui/material/Button';
 
-
-
 const NavBar = () => {
   
   return (
@@ -16,6 +14,7 @@ const NavBar = () => {
         <SearchIcon/>
         <Button>Search</Button>
       </Link>
+      <Link to="/MealCategory"><Button>Category</Button></Link>
       <Link to="/Favorite"><FavoriteIcon/>Favorite</Link>
     </div>
   )
