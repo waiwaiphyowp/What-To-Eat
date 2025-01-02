@@ -30,7 +30,6 @@ const MealCategory = ({}) => {
             <img className="image"
               src={category.strCategoryThumb}
               alt={category.strCategory}
-              
             />
             <p className="title">{category.strCategory}</p>
           </div>
