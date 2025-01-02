@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Favorite from './components/Favorite/Favorite'
@@ -28,5 +27,3 @@ const App = () => {
 }
 
 export default App;
-
-  
