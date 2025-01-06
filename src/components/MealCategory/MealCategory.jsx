@@ -86,7 +86,6 @@ const MealCategory = ({}) => {
               }}>
               {category.strCategory}
             </Button>
-
           </CardContent>
         </Box>
       ))}
