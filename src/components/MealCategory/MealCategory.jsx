@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./MealCategory.css"
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Box,
+  Button,
+} from "@mui/material";
 
 const MealCategory = ({}) => {
   const [categories, setCategories] = useState([]); // Store categories
@@ -15,27 +22,75 @@ const MealCategory = ({}) => {
         // console.log("Fetch data:",data); //checking category data 
         setCategories(data.categories);
       })
-      .catch((error) => console.error("Error fetching Category", error)) //when network or api error console will show error. 
+      .catch((error) => console.error("Error fetching Category", error)) //when network or api error console will show error.
   }, []);
 
   return (
-    <div>
-      <h1>Meal Categories</h1>
-      <div className="mainContainer">
-        {categories.map((category) => (
-          <div 
-            className="container"
-            key={category.idCategory} >
+    <Box sx={{ p: 4, 
+    display: "flex", 
+    flexWrap: "wrap", 
+    justifyContent: "center" }}>
 
-            <img className="image"
-              src={category.strCategoryThumb}
+      <Typography variant="h4" 
+      align="center" 
+      gutterBottom sx={{ width: "100%" }}>
+        Meal Categories
+      </Typography>
+
+      {categories.map((category) => (
+        <Box
+          key={category.idCategory}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            mb: 2,
+            mx: 1,
+            textAlign: "center",
+          }}>
+          
+          {/* layout of card */}
+          <Card
+            sx={{
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              overflow: "hidden",
+              boxShadow: 3,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+              
+            <CardMedia
+              component="img"
+              image={category.strCategoryThumb}
               alt={category.strCategory}
-            />
-            <p className="title">{category.strCategory}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+              sx={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}/>
+          </Card>
+
+           <CardContent sx={{ mt: 0.1 }}> {/*space between card and button */}
+            {/* button design */}
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                borderRadius: "20px",
+                padding: "8px 16px",
+                fontSize: "14px",
+                textTransform: "none",
+              }}>
+              {category.strCategory}
+            </Button>
+
+          </CardContent>
+        </Box>
+      ))}
+    </Box>
   );
 };
 
