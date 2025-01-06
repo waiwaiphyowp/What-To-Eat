@@ -1,4 +1,13 @@
 import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Box,
+} from "@mui/material";
 
 const Search = () => {
   const [searchMeal, setSearchMeal] = useState(""); 
@@ -17,30 +26,72 @@ const Search = () => {
     }
   };
 
-  return (
-    <div>
-      <input
-        type="text"
-        value={searchMeal} 
-        onChange={(event) => setSearchMeal(event.target.value)} 
-        placeholder="Search for a meal..."
-      />
-      <button onClick={handleSearch}>Search</button>
+  //https://mui.com/system/getting-started/the-sx-prop/
 
-      <div>
-        {searchResults.length > 0 && (
-          <ul>
-            {searchResults.map((meal) => (
-              <li key={meal.idMeal}>
-                <h3>{meal.strMeal}</h3>
-                <img src={meal.strMealThumb}/>
-                <p>{meal.strInstructions}...</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
+  return (
+    <Box sx={{ p: 4 }}>
+      
+      {/* search input */}
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
+        <TextField
+          label="Search for a meal"
+          variant="outlined"
+          value={searchMeal}
+          onChange={(event) => setSearchMeal(event.target.value)} 
+          sx={{ width: "60%", height: "56px", mr: 2 }} /> {/*margin-right */}
+
+        {/* search button */}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSearch}
+          sx={{ height: "56px" }}>
+          Search
+        </Button>
+      </Box>
+
+      {/* after search display the meal */}
+      <Box sx={{ 
+              display: "flex", 
+              flexWrap: "wrap", 
+              justifyContent: "center" }}>
+        
+        {searchResults.length > 0 &&
+          searchResults.map((meal) => (
+            <Box
+              key={meal.idMeal}
+              sx={{
+                maxWidth: 345,
+                mx: 2, //margin-left/right
+                mb: 3, //margin-bottom
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: 6,
+                  transition: "0.3s ease",
+                },
+                }}>
+
+              <Card sx={{ maxWidth: 345 }}>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={meal.strMealThumb}
+                  alt={meal.strMeal}
+                />
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    {meal.strMeal}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {/* <p>{meal.strInstructions}...</p> using slice to shorten recipes */}
+                    {meal.strInstructions.slice(0, 100)}...
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+      </Box>
+    </Box>
   );
 };
 
