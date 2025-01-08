@@ -116,9 +116,9 @@ const MealCategory = () => {
         Meal Categories
       </Typography>
 
-      {categories.map((category) => (
+      {categories.map(({idCategory, strCategoryThumb, strCategory }) => (
         <Box
-          key={category.idCategory}
+          key={idCategory}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -142,8 +142,8 @@ const MealCategory = () => {
           >
             <CardMedia
               component="img"
-              image={category.strCategoryThumb}
-              alt={category.strCategory}
+              image={strCategoryThumb}
+              alt={strCategory}
               sx={{
                 width: "100%",
                 height: "100%",
@@ -162,9 +162,9 @@ const MealCategory = () => {
                 fontSize: "14px",
                 textTransform: "none",
               }}
-              onClick={() => setSelectedCategory(category.strCategory)}
+              onClick={() => setSelectedCategory(strCategory)}
             >
-              {category.strCategory}
+              {strCategory}
             </Button>
           </CardContent>
         </Box>
@@ -183,23 +183,23 @@ const MealCategory = () => {
               justifyContent: "center",
             }}
           >
-            {meals.map((meal) => (
+            {meals.map(({idMeal, strMeal, strMealThumb}) => (
               <Card
-                key={meal.idMeal}
+                key={idMeal}
                 sx={{ width: 150, margin: 2, cursor: "pointer" }}
-                onClick={() => handleMealClick(meal.idMeal)}
+                onClick={() => handleMealClick(idMeal)}
               >
                 <CardMedia
                   component="img"
                   height="200"
-                  image={meal.strMealThumb}
-                  alt={meal.strMeal}
+                  image={strMealThumb}
+                  alt={strMeal}
                   sx={{
                     objectFit: "cover",
                   }}
                 />
                 <CardContent>
-                  <Typography variant="h7">{meal.strMeal}</Typography>
+                  <Typography variant="h7">{strMeal}</Typography>
                 </CardContent>
               </Card>
             ))}
