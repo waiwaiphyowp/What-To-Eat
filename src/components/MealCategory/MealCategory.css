@@ -40,6 +40,10 @@
   text-transform: none;
 }
 
+.detailsButton {
+  margin-top: 20px;
+}
+
 .mealsList {
   display: flex;
   flex-wrap: wrap;
@@ -74,8 +78,4 @@
 .ingredientsList {
   list-style-type: none;
   padding: 0;
-}
-
-.detailsButton {
-  margin-top: 20px;
 }

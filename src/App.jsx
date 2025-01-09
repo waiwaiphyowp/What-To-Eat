@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FavoriteBtn from './components/FavoriteBtn/FavoriteBtn';
-import Home from './components/Home/Home'
-import NavBar from './components/NavBar/NavBar'
-import Search from './components/Search/Search'
+import Home from './components/Home/Home';
+import NavBar from './components/NavBar/NavBar';
+import Search from './components/Search/Search';
 import MealCategory from './components/MealCategory/MealCategory';
 
 const App = () => {
@@ -23,21 +23,19 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <Router>
-          <NavBar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Search" element={<Search />} />
-              <Route path="/MealCategory"
-                element={<MealCategory addToFavorites={addToFavorites} />}
-              />
-              <Route path="/Favorite" element={<FavoriteBtn favorites={favorites} 
-                removeFavorites={removeFavorites}
-              />} />
-            </Routes>
-        </Router>
-      </div>
+    <div>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Search" element={<Search addToFavorites={addToFavorites} />} />
+          <Route path="/MealCategory" 
+            element={<MealCategory addToFavorites={addToFavorites} />} />
+          <Route path="/Favorite" element={<FavoriteBtn favorites={favorites} 
+            removeFavorites={removeFavorites} />} />
+        </Routes>
+      </Router>
+    </div>
     </>
   );
 };

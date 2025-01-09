@@ -68,6 +68,16 @@ const MealCategory = ({ addToFavorites }) => {
         <Button variant="contained" onClick={handleBackToCategories} sx={{ mb: 2 }}>
           Back to Categories
         </Button>
+
+        <Button
+          onClick={() => addToFavorites(mealDetails)}
+          variant="contained"
+          color="secondary"
+          className="detailsButton"
+          sx={{ mb: 2 , ml: 2}}
+        >
+          Add to Favorites
+        </Button>
         <Typography variant="h4" gutterBottom>
           {mealDetails.strMeal}
         </Typography>
@@ -97,14 +107,6 @@ const MealCategory = ({ addToFavorites }) => {
             </li>
           ))}
         </ul>
-        <Button
-          onClick={() => addToFavorites(mealDetails)}
-          variant="contained"
-          color="secondary"
-          className="detailsButton"
-        >
-          Add to Favorites
-        </Button>
       </Box>
     );
   }
