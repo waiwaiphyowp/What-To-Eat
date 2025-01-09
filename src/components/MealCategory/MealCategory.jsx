@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
+import { 
+  Card, 
   CardMedia,
-  CardContent,
-  Typography,
-  Box,
-  Button,
+  CardContent, 
+  Typography, 
+  Box, 
+  Button, 
 } from "@mui/material";
+import "./MealCategory.css"; 
 
 const MealCategory = ({ addToFavorites }) => {
   const [categories, setCategories] = useState([]);
@@ -23,21 +24,21 @@ const MealCategory = ({ addToFavorites }) => {
       .then((response) => response.json())
       .then((data) => setCategories(data.categories))
       .catch((error) => console.error("Error fetching Category", error)); //when network or api error console will show error.
-    }, []);
+  }, []);
 
   // Fetch meals when the selected category changes
   useEffect(() => {
     if (selectedCategory) {
       fetch(
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`
-      )
+    )
         .then((response) => response.json())
         .then((data) => setMeals(data.meals))
         .catch((error) => console.error("Error fetching meals", error));
-      }
+    }
   }, [selectedCategory]);
 
-  // when clicks on a meal and will update the state with the meal's details for display
+    // when clicks on a meal and will update the state with the meal's details for display
   const handleMealClick = (mealId) => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
       .then((response) => response.json())
@@ -63,12 +64,8 @@ const MealCategory = ({ addToFavorites }) => {
     }
 
     return (
-      <Box sx={{ p: 4 }}>
-        <Button
-          variant="contained"
-          onClick={handleBackToCategories}
-          sx={{ mb: 2 }}
-        >
+      <Box className="detailsContainer">
+        <Button variant="contained" onClick={handleBackToCategories} sx={{ mb: 2 }}>
           Back to Categories
         </Button>
         <Typography variant="h4" gutterBottom>
@@ -80,7 +77,7 @@ const MealCategory = ({ addToFavorites }) => {
           component="img"
           image={mealDetails.strMealThumb}
           alt={mealDetails.strMeal}
-          sx={{ borderRadius: 2, mb: 2, width: "100%", maxHeight: 400 }}
+          className="detailsImage"
         />
         <Typography variant="h6" gutterBottom>
           Instructions:
@@ -88,12 +85,12 @@ const MealCategory = ({ addToFavorites }) => {
         <Typography variant="body1" gutterBottom>
           {mealDetails.strInstructions}
         </Typography>
-
+        
         {/* ingredients */}
         <Typography variant="h6" gutterBottom>
           Ingredients:
         </Typography>
-        <ul>
+        <ul className="ingredientsList">
           {ingredientsList.map((item, index) => (
             <li key={index}>
               {item.ingredient} - {item.measure}
@@ -104,7 +101,7 @@ const MealCategory = ({ addToFavorites }) => {
           onClick={() => addToFavorites(mealDetails)}
           variant="contained"
           color="secondary"
-          sx={{ mt: 2 }}
+          className="detailsButton"
         >
           Add to Favorites
         </Button>
@@ -113,71 +110,36 @@ const MealCategory = ({ addToFavorites }) => {
   }
 
   return (
-    <Box
-      sx={{
-        p: 4,
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}
-    >
+    <Box className="container">
       <Typography variant="h4" align="center" gutterBottom sx={{ width: "100%" }}>
         Meal Categories
       </Typography>
 
-      {categories.map(({idCategory, strCategoryThumb, strCategory }) => (
-        <Box
-          key={idCategory}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            mb: 2,
-            mx: 1,
-            textAlign: "center",
-          }}
-        >
-          <Card
-            sx={{
-              width: 80,
-              height: 80,
-              borderRadius: "50%",
-              overflow: "hidden",
-              boxShadow: 3,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CardMedia
-              component="img"
-              image={strCategoryThumb}
-              alt={strCategory}
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
-          </Card>
+      <Box className="categoriesList">
+        {categories.map(({ idCategory, strCategoryThumb, strCategory }) => (
+          <Box key={idCategory} className="categoryItem">
+            <Card className="categoryCard">
+              <CardMedia
+                component="img"
+                image={strCategoryThumb}
+                alt={strCategory}
+                className="categoryImage"
+              />
+            </Card>
 
-          <CardContent sx={{ mt: 0.1 }}>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{
-                borderRadius: "20px",
-                padding: "8px 16px",
-                fontSize: "14px",
-                textTransform: "none",
-              }}
-              onClick={() => setSelectedCategory(strCategory)}
-            >
-              {strCategory}
-            </Button>
-          </CardContent>
-        </Box>
-      ))}
+            <CardContent sx={{ mt: 0.1 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                className="categoryButton"
+                onClick={() => setSelectedCategory(strCategory)}
+              >
+                {strCategory}
+              </Button>
+            </CardContent>
+          </Box>
+        ))}
+      </Box>
 
       {selectedCategory && (
         <Box sx={{ p: 2, width: "100%", textAlign: "center" }}>
@@ -185,17 +147,11 @@ const MealCategory = ({ addToFavorites }) => {
             {selectedCategory}
           </Typography>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-              {meals.map(({idMeal, strMeal, strMealThumb}) => (
+          <Box className="mealsList">
+            {meals.map(({ idMeal, strMeal, strMealThumb }) => (
               <Card
                 key={idMeal}
-                sx={{ width: 150, margin: 2, cursor: "pointer" }}
+                className="mealCard"
                 onClick={() => handleMealClick(idMeal)}
               >
                 <CardMedia
@@ -203,12 +159,10 @@ const MealCategory = ({ addToFavorites }) => {
                   height="200"
                   image={strMealThumb}
                   alt={strMeal}
-                  sx={{
-                    objectFit: "cover",
-                  }}
+                  className="mealImage"
                 />
                 <CardContent>
-                  <Typography variant="h7">{strMeal}</Typography>
+                  <Typography className="mealTitle">{strMeal}</Typography>
                 </CardContent>
               </Card>
             ))}

@@ -1,0 +1,31 @@
+/* FavoriteBtn.css */
+
+.container {
+  padding: 20px;
+}
+
+.favoritesList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.favoriteItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.favoriteText {
+  margin-right: 10px;
+}
+
+.favoriteImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.removeButton {
+  margin-left: 10px;
+}

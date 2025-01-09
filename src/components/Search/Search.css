@@ -1,0 +1,80 @@
+.searchContainer {
+  padding: 20px;
+}
+
+.searchInputContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  width: 60%;
+  height: 56px;
+  margin-right: 16px;
+}
+
+.searchButton {
+  height: 56px;
+}
+
+.resultsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.searchResultCard {
+  max-width: 345px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 24px;
+}
+
+.cardHoverEffect:hover {
+  transform: scale(1.05);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.cardMedia {
+  height: 200px;
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.cardDescription {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.seeMoreButton {
+  margin-top: 8px;
+}
+
+.instructionsSection {
+  margin-top: 16px;
+}
+
+.instructionsText {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ingredientsList {
+  margin-top: 16px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.ingredientsList li {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
