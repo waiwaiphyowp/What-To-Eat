@@ -7,8 +7,8 @@ import {
   Box,
   Button,
 } from "@mui/material";
- 
-const MealCategory = () => {
+
+const MealCategory = ({ addToFavorites }) => {
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -23,7 +23,7 @@ const MealCategory = () => {
       .then((response) => response.json())
       .then((data) => setCategories(data.categories))
       .catch((error) => console.error("Error fetching Category", error)); //when network or api error console will show error.
-  }, []);
+    }, []);
 
   // Fetch meals when the selected category changes
   useEffect(() => {
@@ -34,7 +34,7 @@ const MealCategory = () => {
         .then((response) => response.json())
         .then((data) => setMeals(data.meals))
         .catch((error) => console.error("Error fetching meals", error));
-    }
+      }
   }, [selectedCategory]);
 
   // when clicks on a meal and will update the state with the meal's details for display
@@ -50,6 +50,7 @@ const MealCategory = () => {
     setMealDetails(null);
   };
 
+  // Display meal details if a meal is selected
   if (mealDetails) {
     const ingredientsList = [];
 
@@ -99,6 +100,14 @@ const MealCategory = () => {
             </li>
           ))}
         </ul>
+        <Button
+          onClick={() => addToFavorites(mealDetails)}
+          variant="contained"
+          color="secondary"
+          sx={{ mt: 2 }}
+        >
+          Add to Favorites
+        </Button>
       </Box>
     );
   }
@@ -183,7 +192,7 @@ const MealCategory = () => {
               justifyContent: "center",
             }}
           >
-            {meals.map(({idMeal, strMeal, strMealThumb}) => (
+              {meals.map(({idMeal, strMeal, strMealThumb}) => (
               <Card
                 key={idMeal}
                 sx={{ width: 150, margin: 2, cursor: "pointer" }}
