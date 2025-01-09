@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import "./Search.css"; 
 
-const Search = () => {
+const Search = ({ addToFavorites }) => {
   const [searchMeal, setSearchMeal] = useState(""); 
   const [searchResults, setSearchResults] = useState([]); 
   const [seeMoreRecipes, setSeeMoreRecipes] = useState(null); 
@@ -102,6 +102,15 @@ const Search = () => {
                       className="seeMoreButton"
                     >
                       {seeMoreRecipes?.idMeal === meal.idMeal ? "Show Less" : "See More"}
+                    </Button>
+
+                    {/* Add favorites */}
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => addToFavorites(meal)} // Use the addToFavorites function
+                    >
+                      Add to Favorites
                     </Button>
                   </Box>
 
