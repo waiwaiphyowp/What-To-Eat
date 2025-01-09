@@ -16,6 +16,11 @@ const App = () => {
     }
   };
 
+  // remove favorites
+  const removeFavorites = (mealId) => {
+    setFavorites(favorites.filter((meal) => meal.idMeal !== mealId));
+  };
+
   return (
     <>
       <div>
@@ -27,7 +32,9 @@ const App = () => {
               <Route path="/MealCategory"
                 element={<MealCategory addToFavorites={addToFavorites} />}
               />
-              <Route path="/Favorite" element={<FavoriteBtn favorites={favorites} />} />
+              <Route path="/Favorite" element={<FavoriteBtn favorites={favorites} 
+                removeFavorites={removeFavorites}
+              />} />
             </Routes>
         </Router>
       </div>

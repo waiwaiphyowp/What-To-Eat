@@ -1,19 +1,31 @@
-import React from 'react'
+import React from "react";
+import { Button } from "@mui/material";
+import "./FavoriteBtn.css";
 
-const FavoriteBtn = ({ favorites }) => {
+const FavoriteBtn = ({ favorites, removeFavorites }) => {
   return (
-    <div>
+    <div className="container">
       <h2>Favorites</h2>
       {favorites.length > 0 ? (
-        <ul>
-          {favorites.map((meal) => (
-            <li key={meal.idMeal}>
-              {meal.strMeal}
+        <ul className="favoritesList">
+          {favorites.map(({ idMeal, strMealThumb, strMeal }) => (
+            <li key={idMeal} className="favoriteItem">
+              <span className="favoriteText">{strMeal}</span>
               <img
-                src={meal.strMealThumb}
-                alt={meal.strMeal}
-                style={{ width: "50px", marginLeft: "10px" }}
+                src={strMealThumb}
+                alt={strMeal}
+                className="favoriteImage"
               />
+              {/* remove button */}
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                onClick={() => removeFavorites(idMeal)}
+                className="removeButton"
+              >
+                Remove
+              </Button>
             </li>
           ))}
         </ul>
@@ -24,4 +36,4 @@ const FavoriteBtn = ({ favorites }) => {
   );
 };
 
-export default FavoriteBtn
+export default FavoriteBtn;

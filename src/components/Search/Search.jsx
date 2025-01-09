@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import "./Search.css"; 
 
 const Search = () => {
   const [searchMeal, setSearchMeal] = useState(""); 
@@ -46,73 +47,59 @@ const Search = () => {
   //https://mui.com/system/getting-started/the-sx-prop/
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box className="searchContainer">
 
       {/* search input */}
-      <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
+      <Box className="searchInputContainer">
         <TextField
           label="Search for a meal"
           variant="outlined"
           value={searchMeal}
           onChange={(event) => setSearchMeal(event.target.value)} 
-          sx={{ width: "60%", height: "56px", mr: 2 }} />
+          className="searchInput" />
         
          {/* search button */}
         <Button
           variant="contained"
           color="primary"
           onClick={handleSearch}
-          sx={{ height: "56px" }}>
+          className="searchButton">
           Search
         </Button>
       </Box>
 
       {/* after search display the meal */}
-      <Box sx={{ 
-        display: "flex", 
-        flexWrap: "wrap", 
-        justifyContent: "center" }}>
+      <Box className="resultsContainer">
 
         {searchResults.length > 0 &&
           searchResults.map((meal) => (
             <Box
               key={meal.idMeal}
-              sx={{
-                maxWidth: 345,
-                mx: 2, //margin-left/right
-                mb: 3, //margin-bottom
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: 6,
-                  transition: "0.3s ease",
-                },
-              }}>
+              className="searchResultCard cardHoverEffect">
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
-                  height="200"
+                  className="cardMedia"
                   image={meal.strMealThumb}
                   alt={meal.strMeal}
                 />
-                <CardContent>
+                <CardContent className="cardContent">
 
-                  <Typography variant="h6" gutterBottom>
+                  <Typography variant="h6" className="cardTitle">
                     {meal.strMeal}
                   </Typography>
 
-                  <Typography variant="body2" color="text.secondary">
-                    {/* <p>{meal.strInstructions}...</p> using slice to shorten recipes */}
+                  <Typography variant="body2" className="cardDescription">
                     {meal.strInstructions.slice(0, 50)}...
                   </Typography>
 
-                  <Box sx={{ display: "flex", 
-                  justifyContent: "space-between", 
-                  mt: 1 }}>
+                  <Box sx={{ display: "flex", justifyContent: "space-between", mt: 1 }}>
 
                     <Button
                       variant="text"
                       color="primary"
                       onClick={() => handleSeeMore(meal)}
+                      className="seeMoreButton"
                     >
                       {seeMoreRecipes?.idMeal === meal.idMeal ? "Show Less" : "See More"}
                     </Button>
@@ -120,11 +107,11 @@ const Search = () => {
 
                   {/* Instructions */}
                   {seeMoreRecipes?.idMeal === meal.idMeal && (
-                    <Box sx={{ mt: 2 }}>
+                    <Box className="instructionsSection">
                       <Typography variant="body2" color="text.secondary" gutterBottom>
                         <strong>Instructions:</strong>
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.secondary" className="instructionsText">
                         {meal.strInstructions}
                       </Typography>
 
@@ -132,7 +119,7 @@ const Search = () => {
                       <Typography variant="body2" color="text.secondary" gutterBottom sx={{ mt: 2 }}>
                         <strong>Ingredients:</strong>
                       </Typography>
-                      <ul>
+                      <ul className="ingredientsList">
                         {recipesIngredients(meal).map((ingredient, index) => (
                           <li key={index}>{ingredient}</li>
                         ))}
