@@ -29,11 +29,24 @@ const MealDetail = () => {
     }
   }
 
+  const videoLink = mealDetails.strYoutube;
+  
   return (
     <Box className="mealDetailContainer">
-      <Button variant="contained" color="secondary" sx={{ mb: 2 }}>
+      {/* <Button variant="contained" color="secondary" sx={{ mb: 2 }}>
         Add to Favorites
-      </Button>
+      </Button> */}
+      {/* Video Button */}
+      {videoLink && (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => window.open(videoLink, '_blank')}  // Opens the video link in a new tab
+          sx={{ mt: 2 }}
+        >
+          Watch Recipe Video
+        </Button>
+      )}
       <Typography variant="h4" gutterBottom>
         {mealDetails.strMeal}
       </Typography>
@@ -41,19 +54,13 @@ const MealDetail = () => {
       {/* instructions */}
       <CardMedia
         component="img"
+        height="500"
         image={mealDetails.strMealThumb}
         alt={mealDetails.strMeal}
-        className="mealDetailImage"
       />
-      <Typography variant="h6" gutterBottom>
-        Instructions:
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        {mealDetails.strInstructions}
-      </Typography>
 
       {/* ingredients */}
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom className='ingredientTitle'>
         Ingredients:
       </Typography>
       <ul className="ingredientsList">
@@ -62,6 +69,12 @@ const MealDetail = () => {
             {item.ingredient} - {item.measure}
           </li>
         ))}
+        <Typography variant="h6" gutterBottom className='instructionsRec'>
+          Instructions:
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          {mealDetails.strInstructions}
+        </Typography>
       </ul>
     </Box>
   );

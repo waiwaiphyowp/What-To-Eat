@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import "./Search.css"; 
 
 const Search = ({ addToFavorites }) => {
@@ -70,7 +71,6 @@ const Search = ({ addToFavorites }) => {
 
       {/* after search display the meal */}
       <Box className="resultsContainer">
-
         {searchResults.length > 0 &&
           searchResults.map((meal) => (
             <Box
@@ -84,7 +84,6 @@ const Search = ({ addToFavorites }) => {
                   alt={meal.strMeal}
                 />
                 <CardContent className="cardContent">
-
                   <Typography variant="h6" className="cardTitle">
                     {meal.strMeal}
                   </Typography>
@@ -94,7 +93,6 @@ const Search = ({ addToFavorites }) => {
                   </Typography>
 
                   <Box sx={{ display: "flex", justifyContent: "space-between", mt: 1 }}>
-
                     <Button
                       variant="text"
                       color="primary"
@@ -104,13 +102,22 @@ const Search = ({ addToFavorites }) => {
                       {seeMoreRecipes?.idMeal === meal.idMeal ? "Show Less" : "See More"}
                     </Button>
 
-                    {/* Add favorites */}
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => addToFavorites(meal)} // Use the addToFavorites function
-                    >
-                      Add to Favorites
+                    {/* Video Link */}
+                    {meal.strYoutube && (
+                        <Box sx={{ mt: 2 }}>
+                          <Button
+                            variant="contained"
+                            onClick={() => window.open(meal.strYoutube, "_blank")}
+                            sx={{backgroundColor: '#e55a00'}}
+                          >
+                          Video
+                          </Button>
+                        </Box>
+                      )}
+
+                    {/* favorites button */}
+                    <Button onClick={() => addToFavorites(meal)}>
+                      <VolunteerActivismIcon />
                     </Button>
                   </Box>
 
@@ -124,7 +131,7 @@ const Search = ({ addToFavorites }) => {
                         {meal.strInstructions}
                       </Typography>
 
-                      {/* ingredient */}
+                      {/* Ingredients */}
                       <Typography variant="body2" color="text.secondary" gutterBottom sx={{ mt: 2 }}>
                         <strong>Ingredients:</strong>
                       </Typography>

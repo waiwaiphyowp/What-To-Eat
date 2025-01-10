@@ -65,39 +65,48 @@ const MealCategory = ({ addToFavorites }) => {
 
     return (
       <Box className="detailsContainer">
-        <Button variant="contained" onClick={handleBackToCategories} sx={{ mb: 2 }}>
+        <Button variant="contained" 
+        onClick={handleBackToCategories} 
+        sx={{ mb: 2 }}>
           Back to Categories
         </Button>
 
         <Button
           onClick={() => addToFavorites(mealDetails)}
           variant="contained"
-          color="secondary"
           className="detailsButton"
           sx={{ mb: 2 , ml: 2}}
         >
           Add to Favorites
         </Button>
+
+        {/* videos */}
+        {mealDetails.strYoutube && (
+          <Button
+            variant="contained"
+            color="primary"
+            className="videoButton"
+            onClick={() => window.open(mealDetails.strYoutube, "_blank")}
+            sx={{ mb: 2 , ml: 2}}
+          >
+            Watch Recipe Video
+          </Button>
+        )}
+
         <Typography variant="h4" gutterBottom>
           {mealDetails.strMeal}
         </Typography>
 
-        {/* instructions */}
+        {/* meal image */}
         <CardMedia
           component="img"
           image={mealDetails.strMealThumb}
           alt={mealDetails.strMeal}
           className="detailsImage"
         />
-        <Typography variant="h6" gutterBottom>
-          Instructions:
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          {mealDetails.strInstructions}
-        </Typography>
-        
+
         {/* ingredients */}
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom className="ingredientTitle">
           Ingredients:
         </Typography>
         <ul className="ingredientsList">
@@ -107,6 +116,14 @@ const MealCategory = ({ addToFavorites }) => {
             </li>
           ))}
         </ul>
+
+        {/* instructions */}
+        <Typography variant="h6" gutterBottom className="instructionsRec">
+          INSTRUCTIONS:
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          {mealDetails.strInstructions}
+        </Typography>
       </Box>
     );
   }
