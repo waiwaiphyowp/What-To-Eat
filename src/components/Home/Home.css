@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+}
+
+.homePagePic {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover; 
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.homeContent {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: white;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 10px;
+}
+
+.homeContent h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.homeContent span {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .homeContent span {
+    font-size: 1rem;
+  }
+}
