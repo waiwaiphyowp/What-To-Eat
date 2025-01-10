@@ -16,19 +16,15 @@ const NavBar = () => {
       sx={{ 
         backgroundColor: "white", 
         boxShadow: "none"  
-      }}
-    >
+      }} s>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         
         {/* home */}
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Link to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <IconButton edge="start" color="primary">
-              <OtherHousesIcon />
-            </IconButton>
-            <Typography variant="h6" color="primary">
-              Home
-            </Typography>
+              <Button> <OtherHousesIcon/>
+                Home
+              </Button>
           </Link>
         </Box>
         
@@ -36,7 +32,7 @@ const NavBar = () => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <LocalDiningIcon sx={{ fontSize: "40px", color: "#FF5722", mr: 1 }} />
           <Typography variant="h6" sx={{ fontWeight: "bold", color: "#FF5722" }}>
-            What-To-Eat
+            What to Eat
           </Typography>
         </Box>
 
