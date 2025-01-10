@@ -1,8 +1,16 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";  // Import useNavigate from React Router
 import "./FavoriteBtn.css";
 
 const FavoriteBtn = ({ favorites, removeFavorites }) => {
+  const navigate = useNavigate();  // Initialize navigate function
+
+  // Handle going back to a specific recipe page
+  const handleBackToRecipe = (mealId) => {
+    navigate(`/meal/${mealId}`);  // Navigate to the specific meal's details page
+  };
+
   return (
     <div className="container">
       <h2>Favorites</h2>
@@ -16,6 +24,18 @@ const FavoriteBtn = ({ favorites, removeFavorites }) => {
                 alt={strMeal}
                 className="favoriteImage"
               />
+
+              {/* Back to recipe button */}
+              <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                onClick={() => handleBackToRecipe(idMeal)}
+                className="backButton"
+              >
+                Recipe
+              </Button>
+
               {/* remove button */}
               <Button
                 variant="contained"
@@ -23,9 +43,12 @@ const FavoriteBtn = ({ favorites, removeFavorites }) => {
                 size="small"
                 onClick={() => removeFavorites(idMeal)}
                 className="removeButton"
+                sx={{ ml: 2 }} 
               >
                 Remove
               </Button>
+
+              
             </li>
           ))}
         </ul>
