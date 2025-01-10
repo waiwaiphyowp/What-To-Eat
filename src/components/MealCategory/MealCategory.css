@@ -25,19 +25,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .categoryImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.categoryButton {
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 14px;
-  text-transform: none;
+  border-radius: 50%; 
 }
 
 .detailsButton {
@@ -52,16 +47,30 @@
 
 .mealCard {
   width: 150px;
-  margin: 2px;
+  margin: 10px;
   cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mealCard:hover {
+  transform: scale(1.05); /* zoom effect on meal card */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); 
 }
 
 .mealImage {
   object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 200px;
 }
 
 .mealTitle {
   font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 8px;
 }
 
 .detailsContainer {
@@ -69,13 +78,37 @@
 }
 
 .detailsImage {
-  border-radius: 2px;
+  border-radius: 5px;
   margin-bottom: 20px;
   width: 100%;
   max-height: 400px;
+  object-fit: cover;
+}
+
+.ingredientTitle{
+  color: #e55a00;
+  text-align: center;
 }
 
 .ingredientsList {
   list-style-type: none;
   padding: 0;
+  text-align: center;
+}
+
+.ingredientsList li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #212121;
+}
+
+.ingredientsList li::before {
+  content: "• ";
+  color: #ff6a00;
+  font-size: 18px;
+}
+
+.instructionsRec {
+  color: #e55a00;
+  padding-top: 10px;
 }

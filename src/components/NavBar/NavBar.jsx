@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@mui/material';
-import OtherHousesIcon from '@mui/icons-material/OtherHouses';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 
 // https://mui.com/material-ui/react-app-bar/ 
-
 const NavBar = () => {
 
   return (
@@ -22,7 +21,7 @@ const NavBar = () => {
         {/* home */}
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Link to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-              <Button> <OtherHousesIcon/>
+              <Button> <HomeIcon/>
                 Home
               </Button>
           </Link>

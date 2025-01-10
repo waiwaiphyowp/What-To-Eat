@@ -8,8 +8,11 @@ const Home = () => {
       <img src={homePagePic} alt="homePagePic" className='homePagePic' />
       <div className="homeContent">
         
-        <h1>Welcome to Our Website</h1>
-        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci nobis dolores, eum sed alias, harum quasi voluptates asperiores unde architecto pariatur enim tenetur libero iure deleniti neque placeat sunt illum.</span>
+        <h1>Run Out of Cooking Ideas?</h1>
+        <span>Worry no more! Discover fresh, easy to make recipes for any cravings.
+              Our app helps you decide what to eat and guide you through cooking it yourself.
+              Let's make mealtime great again!
+        </span>
       </div>
     </div>
   );
