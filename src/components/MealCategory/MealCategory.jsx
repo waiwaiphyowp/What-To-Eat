@@ -24,7 +24,7 @@ const MealCategory = ({ addToFavorites }) => {
       .then((response) => response.json())
       .then((data) => setCategories(data.categories))
       .catch((error) => console.error("Error fetching Category", error)); //when network or api error console will show error.
-  }, []);
+  }, [categories]);
 
   // Fetch meals when the selected category changes
   useEffect(() => {
@@ -93,7 +93,7 @@ const MealCategory = ({ addToFavorites }) => {
           </Button>
         )}
 
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom sx={{color: '#e55a00', textAlign: 'center'}}>
           {mealDetails.strMeal}
         </Typography>
 
@@ -118,7 +118,7 @@ const MealCategory = ({ addToFavorites }) => {
         </ul>
 
         {/* instructions */}
-        <Typography variant="h6" gutterBottom className="instructionsRec">
+        <Typography variant="h6" gutterBottom className="instructionsRec" sx={{textAlign: 'center'}}>
           INSTRUCTIONS:
         </Typography>
         <Typography variant="body1" gutterBottom>
