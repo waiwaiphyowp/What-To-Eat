@@ -28,7 +28,7 @@ const Search = ({ addToFavorites }) => {
         });
     }
   };
-   
+  
   const handleSeeMore = (meal) => {
     setSeeMoreRecipes(seeMoreRecipes?.idMeal === meal.idMeal ? null : meal); 
   };
